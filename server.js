@@ -5,7 +5,7 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 app.get("/", function(request, response){
-	response.setHead("Content-Type", "text/html");
+	response.setHeader("Content-Type", "text/html");
 	response.send("Hello from sockets example");
 });
 
