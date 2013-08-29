@@ -12,6 +12,12 @@ var app = require('express')()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
 
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
+
+
 server.listen(port);
 
 console.log("listening on port:", port);
@@ -27,17 +33,13 @@ app.get("/", function(request, response){
 	response.send(content);
 });
 
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
 	socket.emit('news', { hello: 'world' });
-	socket.on('my other event', function (data) {
-	    console.log(data);
-	});
+	//socket.on('my other event', function (data) {
+	  //  console.log(data);
+//	});
 
 
 //	arr.map(function (item){

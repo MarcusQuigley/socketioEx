@@ -6,11 +6,12 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			alert('hell');
+			//alert('hell');
 			var socket=io.connect();
 			 socket.on('news', function (data) {
-			  document.getElementById("myResults") =data;
-			    socket.emit('my other event', { my: 'data' });
+			alert(data);
+			  document.getElementById("myResults") = data;
+//			    socket.emit('my other event', { my: 'data' });
 			  });
 			//socket.on("tweet", function(tweet){
 			//	document.getElementById("myResults") = tweet;
