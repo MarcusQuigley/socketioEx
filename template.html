@@ -9,9 +9,8 @@
 			//alert('hell');
 			var socket=io.connect();
 			 socket.on('news', function (data) {
-			alert(data.hello);
-			console.log("Data on client page:",data);
-			  document.getElementById("myResults") = data;
+
+			  document.getElementById("myResults") = data.hello;
 //			    socket.emit('my other event', { my: 'data' });
 			  });
 			//socket.on("tweet", function(tweet){
