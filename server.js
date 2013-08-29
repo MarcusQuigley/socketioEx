@@ -1,14 +1,23 @@
 
-var express = require('express');
-var server = require('http');
-var io = require('sockets.io');
-var app = express();
-server.createServer(app);
-io.listen(server);
+//var express = require('express');
+//var server = require('http');
+//var io = require('socket.io');
+//var app = express();
+var port = process.env.PORT || 5000;
+//server.createServer(app);
+//io.listen(server);
+//server.listen(port);
+
+var app = require('express')()
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
+
 server.listen(port);
 
+console.log("listening on port:", port);
+
 var fs = require('fs');
-var port = process.env.PORT || 5000;
+//var port = process.env.PORT || 5000;
 
 app.get("/", function(request, response){
 	var content = fs.readFileSync('template.html');
@@ -16,6 +25,13 @@ app.get("/", function(request, response){
 	response.send(content);
 });
 
+io.sockets.on('connection', function(socket){
+	console.log("set up socket", socket);
+});
+
 //app.listen(port);
-console.log("listening on port:", port);
+//console.log("listening on port:", port);
+
+
+
 
