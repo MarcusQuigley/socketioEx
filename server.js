@@ -27,6 +27,11 @@ app.get("/", function(request, response){
 	response.send(content);
 });
 
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
 	socket.emit('news', { hello: 'world' });
