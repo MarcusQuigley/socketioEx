@@ -9,7 +9,8 @@
 			//alert('hell');
 			var socket=io.connect();
 			 socket.on('news', function (data) {
-			alert(data);
+			alert(data.hello);
+			console.log("Data on client page:",data);
 			  document.getElementById("myResults") = data;
 //			    socket.emit('my other event', { my: 'data' });
 			  });
