@@ -7,8 +7,12 @@
 	<body>
 		<script type="text/javascript">
 			var socket=io.connect();
-			socket.on("tweet", function(tweet){
-				document.getElementById("myResults") = tweet;
+			 socket.on('news', function (data) {
+			  document.getElementById("myResults") =data;
+			    socket.emit('my other event', { my: 'data' });
+			  });
+			//socket.on("tweet", function(tweet){
+			//	document.getElementById("myResults") = tweet;
 			
 			});
 
