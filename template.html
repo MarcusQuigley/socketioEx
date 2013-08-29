@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+			alert('hell');
 			var socket=io.connect();
 			 socket.on('news', function (data) {
 			  document.getElementById("myResults") =data;
