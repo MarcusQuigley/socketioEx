@@ -12,8 +12,10 @@
 			//alert('hell');
 			var socket=io.connect();
 			 socket.on('news', function (data) {
-
-			  document.getElementById("myResults").innerHtml = "data.hello";
+				var theDiv = document.getElementById("myResults");
+				var content = document.createTextNode("data.hello");
+				theDiv.appendChild(content);
+//			  document.getElementById("myResults").innerHtml = "data.hello";
 //			    socket.emit('my other event', { my: 'data' });
 			  });
 			//socket.on("tweet", function(tweet){
