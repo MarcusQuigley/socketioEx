@@ -2,8 +2,18 @@
 <html>
 	<head>
 		<title> SocketIO example </title>
+		<script src="/socket.io/socket.io.js"></script>
 	</head>
 	<body>
+		<script type="text/javascript">
+			var socket=io.connect();
+			socket.on("tweet", function(tweet){
+				document.getElementById("myResults") = tweet;
+			
+			});
+
+		</script>
 		<h1>Socket example</h1>
+		<div id="myResults"></div>
 	</body>
 </html>

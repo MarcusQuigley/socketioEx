@@ -30,6 +30,7 @@ app.get("/", function(request, response){
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
 	arr.map(function (item){
+		socket.emit('tweet',item )
 		console.log(item);
 	});
 });
