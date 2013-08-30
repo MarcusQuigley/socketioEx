@@ -32,8 +32,8 @@ io.sockets.on('connection', function(socket){
 	for(var i=0;i<50;i++){//  arr.map(function(cnt){
 		(function(s){
 		 	setTimeout(function(){
-				socket.emit('news', { 'value': i });
-				console.log(i);
+				socket.emit('news', { 'value': s });
+				console.log(s);
 			}, 100);
 		})(i);
 
