@@ -36,7 +36,7 @@ app.get("/", function(request, response){
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
-	socket.emit('news', { 'world' });
+	socket.emit('news', { 'value': 'world' });
 	//socket.on('my other event', function (data) {
 	  //  console.log(data);
 //	});

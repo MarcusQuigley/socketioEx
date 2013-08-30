@@ -13,7 +13,7 @@
 			var socket=io.connect();
 			 socket.on('news', function (data) {
 				var theDiv = document.getElementById("myResults");
-				var content = document.createTextNode("data");
+				var content = document.createTextNode(data.value);
 				theDiv.appendChild(content);
 //			  document.getElementById("myResults").innerHtml = "data.hello";
 //			    socket.emit('my other event', { my: 'data' });
