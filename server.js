@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket){
 		function(stream) {
 			stream.on('data', function(tweet){
 				console.log(tweet);
-				socket.emit('tweetBroadcast', { 'value': 'tweet' });
+				socket.emit('tweetBroadcast', { 'value': tweet });
 			});
 	
 		});		
