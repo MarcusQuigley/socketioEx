@@ -31,7 +31,7 @@ app.get("/", function(request, response){
 	response.setHeader("Content-Type", "text/html");
 	response.send(content);
 });
-searchTweet='nick cave';
+searchTweet='dublin';
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);

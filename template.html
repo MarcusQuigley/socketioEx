@@ -10,15 +10,16 @@
 			{{TWEETS}}
 		</ul>
 		<script type="text/javascript">
-			alert('hell');
+	//		alert('hell');
 			var socket=io.connect();
 			var ul = document.getElementById("tweets");
 			 socket.on('tweetBroadcast', function (tweet) {
+					alert(tweet.text);
 				var li = document.createElement("li");
 				li.innerHTML = "<strong>" + tweet.user.screen_name + ": </strong>" + tweet.text;
 				ul.insertBefore(li, ul.getElementsByTagName("li")[0]);
 			  });
-			alert('hell2');
+	//		alert('hell2');
 		</script>
 	</body>
 </html>
