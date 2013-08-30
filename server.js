@@ -20,8 +20,8 @@ console.log("listening on port:", port);
 var twit = new twitter({
 	consumer_key: credentials.consumer_key,
         consumer_secret: credentials.consumer_secret,
-        access_token_key: credentials.consumer_access_token_key,
-        access_token_secret: credentials.consumer_access_token_secret
+        access_token_key: credentials.access_token_key,
+        access_token_secret: credentials.access_token_secret
 });
 
 var fs = require('fs');
@@ -33,21 +33,16 @@ app.get("/", function(request, response){
 });
 
 
-//io.sockets.on('connection', function(socket){
-//	console.log("set up socket", socket);
-	twit.stream('statuses/filter', {track: ['nick cave']},
+io.sockets.on('connection', function(socket){
+	console.log("set up socket", socket);
+	twit.stream('statuses/filter', {track: ['bieber']},
 		function(stream) {
 			stream.on('data', function(tweet){
 				console.log(tweet);
-//				socket.emit('tweetBroadcast', { 'value': 'tweet' });
+				socket.emit('tweetBroadcast', { 'value': 'tweet' });
 			});
 	
 		});		
-
-			
-	
-//});
-
-
+});
 
 
