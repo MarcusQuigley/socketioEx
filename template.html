@@ -11,11 +11,11 @@
 		<script type="text/javascript">
 			//alert('hell');
 			var socket=io.connect();
-			 socket.on('news', function (data) {
+			 socket.on('tweet', function (tweetdata) {
 				//var theDiv = document.getElementById("myResults");
 				//var content = document.createTextNode(data.value);
 				//theDiv.appendChild(content);
-			  document.getElementById("myResults").innerHTML = data.value;
+			  document.getElementById("myResults").innerHTML = tweetdata;
 //			    socket.emit('my other event', { my: 'data' });
 			  });
 			//socket.on("tweet", function(tweet){

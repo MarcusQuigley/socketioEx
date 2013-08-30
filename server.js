@@ -1,6 +1,7 @@
 
 var port = process.env.PORT || 5000;
-
+var twitter = require('ntwitter');
+var credentials = require('./credentials.js');
 
 var app = require('express')()
   , server = require('http').createServer(app)
@@ -15,10 +16,15 @@ io.configure(function () {
 server.listen(port);
 
 console.log("listening on port:", port);
-var count = 50;
-var timeout = 100;
+
+var twit = new twitter({
+	consumer_key: credentials.consumer_key,
+        consumer_secret: credentials.consumer_secret,
+        access_token_key: credentials.consumer_access_token_key,
+        access_token_secret: credentials.consumer_access_token_secret
+});
+
 var fs = require('fs');
-var arr = [count];
 
 app.get("/", function(request, response){
 	var content = fs.readFileSync('template.html');
@@ -29,16 +35,15 @@ app.get("/", function(request, response){
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
-	var delay=1000
-	for(var i=0;i<50;i++){//  arr.map(function(cnt){
-		(function(s){
-		 	setTimeout(function(){
-				socket.emit('news', { 'value': s });
-				console.log(s);
-			}, delay);
-		})(i);
-	delay+=1000;
-	}		
+	t.stream('statuses/filter', {track: ['nick cave']},
+		function(stream) {
+			stream.on('data', function(tweet){
+				socket.emit('tweet', { 'value': tweet });
+			});
+	
+		});		
+
+			
 	
 });
 
