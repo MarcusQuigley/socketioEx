@@ -33,8 +33,8 @@ app.get("/", function(request, response){
 });
 
 
-io.sockets.on('connection', function(socket){
-	console.log("set up socket", socket);
+//io.sockets.on('connection', function(socket){
+//	console.log("set up socket", socket);
 	twit.stream('statuses/filter', {track: ['nick cave']},
 		function(stream) {
 			stream.on('data', function(tweet){
@@ -46,7 +46,7 @@ io.sockets.on('connection', function(socket){
 
 			
 	
-});
+//});
 
 
 
