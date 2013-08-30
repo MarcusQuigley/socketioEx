@@ -38,7 +38,10 @@ io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
 	arr.map(function(count){
 		(function(s){
-		 	setTimeout(function(){socket.emit('news', { 'value': count });}, 100);
+		 	setTimeout(function(){
+				socket.emit('news', { 'value': count });
+				console.log(count);
+			}, 100);
 		})(count);
 //		socket.emit('news', { 'value': count });
 	});		
