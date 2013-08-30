@@ -35,10 +35,10 @@ app.get("/", function(request, response){
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
-	t.stream('statuses/filter', {track: ['nick cave']},
+	twit.stream('statuses/filter', {track: ['nick cave']},
 		function(stream) {
 			stream.on('data', function(tweet){
-				socket.emit('tweet', { 'value': tweet });
+				socket.emit('tweetBroadcast', { 'value': tweet });
 			});
 	
 		});		
