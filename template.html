@@ -5,24 +5,19 @@
 		<script src="/socket.io/socket.io.js"></script>
 	</head>
 	<body>
-		 <h1>Socket example</h1>
-                <div id="myResults"></div>
-
+		<h1>Socket example</h1>
+		<ul id='tweets'>
+			{{TWEETS}}
+		</ul>
 		<script type="text/javascript">
 			//alert('hell');
 			var socket=io.connect();
-			 socket.on('tweetBroadcast', function (tweetdata) {
-				//var theDiv = document.getElementById("myResults");
-				//var content = document.createTextNode(data.value);
-				//theDiv.appendChild(content);
-			  document.getElementById("myResults").innerHTML = tweetdata;
-//			    socket.emit('my other event', { my: 'data' });
+			var ul = document.getElementById("tweets");
+			 socket.on('tweetBroadcast', function (tweet) {
+				var li = document.createElement("li");
+				li.innerHTML = "<strong>" + tweet.user.screen_name + ": </strong>" + tweet.text;
+				ul.insertBefore(li, ul.getElementByTagName("li")[0]);
 			  });
-			//socket.on("tweet", function(tweet){
-			//	document.getElementById("myResults") = tweet;
-			
-
-
 		</script>
 	</body>
 </html>
