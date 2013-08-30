@@ -38,8 +38,8 @@ io.sockets.on('connection', function(socket){
 	twit.stream('statuses/filter', {track: [searchTweet]},
 		function(stream) {
 			stream.on('data', function(tweet){
-				console.log(tweet);
-				socket.emit('tweetBroadcast', { 'value': tweet });
+				console.log(tweet.text);
+				socket.emit('tweetBroadcast',tweet );
 			});
 	
 		});		
