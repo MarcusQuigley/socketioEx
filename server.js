@@ -36,11 +36,11 @@ app.get("/", function(request, response){
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
-	arr.map(function(count){
+	arr.map(function(cnt){
 		(function(s){
 		 	setTimeout(function(){
-				socket.emit('news', { 'value': count });
-				console.log(count);
+				socket.emit('news', { 'value': cnt });
+				console.log(cnt);
 			}, 100);
 		})(count);
 //		socket.emit('news', { 'value': count });
