@@ -29,14 +29,15 @@ app.get("/", function(request, response){
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
+	var delay=1000
 	for(var i=0;i<50;i++){//  arr.map(function(cnt){
 		(function(s){
 		 	setTimeout(function(){
 				socket.emit('news', { 'value': s });
 				console.log(s);
-			}, 1000);
+			}, delay);
 		})(i);
-
+	delay+=1000;
 	}		
 	
 });
