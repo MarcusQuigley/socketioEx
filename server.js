@@ -2,7 +2,7 @@
 var port = process.env.PORT || 5000;
 var twitter = require('ntwitter');
 var credentials = require('./credentials.js');
-
+var searchTweet;
 var app = require('express')()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
@@ -31,11 +31,11 @@ app.get("/", function(request, response){
 	response.setHeader("Content-Type", "text/html");
 	response.send(content);
 });
-
+searchTweet='nick cave';
 
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
-	twit.stream('statuses/filter', {track: ['bieber']},
+	twit.stream('statuses/filter', {track: [searchTweet]},
 		function(stream) {
 			stream.on('data', function(tweet){
 				console.log(tweet);
