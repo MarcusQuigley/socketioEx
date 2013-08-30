@@ -16,7 +16,7 @@
 			 socket.on('tweetBroadcast', function (tweet) {
 				var li = document.createElement("li");
 				li.innerHTML = "<strong>" + tweet.user.screen_name + ": </strong>" + tweet.text;
-				ul.insertBefore(li, ul.getElementByTagName("li")[0]);
+				ul.insertBefore(li, ul.getElementsByTagName("li")[0]);
 			  });
 			alert('hell2');
 		</script>
