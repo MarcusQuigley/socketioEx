@@ -34,7 +34,7 @@ io.sockets.on('connection', function(socket){
 		 	setTimeout(function(){
 				socket.emit('news', { 'value': s });
 				console.log(s);
-			}, 100);
+			}, 1000);
 		})(i);
 
 	}		
