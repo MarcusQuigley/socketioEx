@@ -38,7 +38,8 @@ io.sockets.on('connection', function(socket){
 	twit.stream('statuses/filter', {track: ['nick cave']},
 		function(stream) {
 			stream.on('data', function(tweet){
-				socket.emit('tweetBroadcast', { 'value': tweet });
+				console.log(tweet);
+//				socket.emit('tweetBroadcast', { 'value': 'tweet' });
 			});
 	
 		});		
