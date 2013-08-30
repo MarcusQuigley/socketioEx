@@ -37,8 +37,13 @@ app.get("/", function(request, response){
 io.sockets.on('connection', function(socket){
 	console.log("set up socket", socket);
 	arr.map(function(count){
-		socket.emit('news', { 'value': count });
-	});
+		(function(s){
+		 	setTimeout(function(){socket.emit('news', { 'value': count });}, 100);
+		})(count);
+//		socket.emit('news', { 'value': count });
+	});		
+	
+
 	//socket.on('my other event', function (data) {
 	  //  console.log(data);
 //	});
